@@ -1,3 +1,4 @@
+#https://www.youtube.com/watch?v=ZfKTD5lvToE
 '''
     Get all of the factors
     add up to see if it equals the original number
