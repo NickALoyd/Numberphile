@@ -14,8 +14,6 @@ def perfectNumbers(x):
         y += factors[i]
 
     if (x == y):
-        print( str(x) + " is a Perfect Numbers")
-    else:
-        print(str(x) + " is Not a perfect number")
-
-perfectNumbers(496)
+        print( str(x) + ", ")
+for i in range(1000):
+    perfectNumbers(i)
