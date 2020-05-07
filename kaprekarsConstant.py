@@ -1,6 +1,6 @@
 #https://www.youtube.com/watch?v=d8TRcZklX_Q
 
-9281 #starting number
+9281 #starting number must be a 4 digit number 
 9821 #sort from largest to smallest
 1289 #sort from smallest to largest
 d = 8532 #b-c
@@ -34,13 +34,17 @@ def getTo6174(a): #yay recursion
     c = sortHightoLow(b)
     d = sortLowtoHigh(b)
     e = listToInt(c) - listToInt(d)
-    print(a)
+    #print(a)
     if a == e:
         return e
     else:
         return getTo6174(e)
+x = []
+for i in range(1000,10000):
+    if getTo6174(i) != 6174:
+        x.append(i)
+print(x)
 
-
-print(getTo6174(2984))
+#print(getTo6174(2984))
 
 
