@@ -3,8 +3,8 @@
 def isTaxiCab(goal):
     Max = int(goal**(1/3)) + 1
     l = []
-    for x in range(Max):
-        for y in range(Max):
+    for x in range(1,Max):        
+        for y in range(int((goal-x**3)**(1/3)),Max):
             if x**3 + y**3 == goal:
                 l.append([x,y])
     if len(l) >= 4:
@@ -14,6 +14,6 @@ def isTaxiCab(goal):
     
 goal = 1729
 
-for i in range(1,5000):
+for i in range(1,100000):
     if isTaxiCab(i):
         print(i)
