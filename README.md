@@ -13,3 +13,7 @@ Not really about numbers or how to derive it. I mean technically I can get it bu
 1 and Prime Numbers
 https://www.youtube.com/watch?v=IQofiPqhJ_s
 This one esspecially NOT going to do. It's just the theory of numbers and saying 1 shouldn't be prime because you would have to keep saying except one for every theory. Nothing I can even come up with saying what I can do in the future. 
+
+Googol and goololplex 
+https://www.youtube.com/watch?v=8GEebx72-qs
+This is another thing that I am going to skip. Theory of numbers blah blah blah
