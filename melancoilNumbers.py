@@ -1,8 +1,6 @@
-#Going to take the base of happy numbers
-#we are going to have a group for known happy numbers
-#we are also going to have a group for known melancoil numbers
-#if the number we are testing is in the group we are going to continue to the next number
-#WE are going to graph the numbers using nodes (hopefully)
+#https://www.youtube.com/watch?v=_DpzAvb3Vk4 #Numberphile Video
+#https://networkx.github.io/documentation/stable/tutorial.html
+#https://stackoverflow.com/questions/27030473/how-to-set-colors-for-nodes-in-networkx
 
 import networkx as nx
 from matplotlib import pyplot as plt
@@ -13,8 +11,6 @@ def getNextHappyNumber(y):
     for i in range(len(y)):
         total += int(y[i])**2 
     return total
-
-print(getNextHappyNumber(7))
 
 G = nx.Graph()
 
