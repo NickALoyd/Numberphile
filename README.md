@@ -17,3 +17,8 @@ This one esspecially NOT going to do. It's just the theory of numbers and saying
 Googol and goololplex 
 https://www.youtube.com/watch?v=8GEebx72-qs
 This is another thing that I am going to skip. Theory of numbers blah blah blah
+
+Penrose Tiling 
+https://www.youtube.com/watch?v=QTrM-UVcgBY&t=314s
+I have no idea how to start this right now. I might look at some refrence of someone else to try to make something similar. 
+But Right now I have no idea about the math, about the code, or even about fudging it to make it work.  
