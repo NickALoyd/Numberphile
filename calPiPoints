@@ -1,0 +1,26 @@
+#Not a numberphile video but I thought it was cool similar to the dart game in 2019
+#http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/graphics.html
+
+import graphics as g
+import random as rand
+import time as t
+win = g.GraphWin()
+
+r = win.getWidth()/2
+pt = g.Point(r,r)
+cir = g.Circle(pt,r)
+cir.draw(win)
+
+insideCir = 0
+for insideSqr in range(1,1000):
+    x = rand.uniform(-r, r)  
+    y = rand.uniform(-r, r)
+    pt = g.Point(x+r,y+r)
+    pt.draw(win)
+    
+    if (x**2+y**2 <= r**2): #calculate line using pythagreon therom
+        insideCir += 1 
+
+print(4*insideCir/insideSqr)
+
+    
