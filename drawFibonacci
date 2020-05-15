@@ -1,0 +1,18 @@
+#https://www.youtube.com/watch?v=DRjFV_DETKQ
+#https://docs.python.org/3.3/library/turtle.html?highlight=turtle#turtle.position
+import turtle
+
+turt = turtle.Turtle()
+def makeSquare(l):
+    for i in range(5):
+        turt.forward(l)
+        turt.left(90)
+    turt.forward(l)
+    
+def fibonacci(n):
+    if n <= 1:
+        return 1
+    return fibonacci(n-2) + fibonacci(n-1)
+
+for i in range(9):
+    makeSquare(fibonacci(i)*10)
