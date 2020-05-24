@@ -7,7 +7,6 @@ def isYahtzee():
     for i in range(5): dice.append(random.randint(1,6))
     return len(dice) == dice.count(dice[0])
 
-rolls,count = 10**6,0
-for i in range(rolls):
-    if isYahtzee(): count += 1
-print("average rolls till yahtzee",rolls/count)
+rolls = 0
+while not isYahtzee(): rolls += 1
+print("It took ", rolls," to get a yahtzee.")
