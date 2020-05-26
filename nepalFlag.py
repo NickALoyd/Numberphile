@@ -1,4 +1,5 @@
 #https://www.youtube.com/watch?v=k7Gtrs9Msu8
+#https://www.youtube.com/watch?v=k7Gtrs9Msu8 How to construct Nepals Flag
 from turtle import *
 import math
 import numpy
@@ -8,6 +9,8 @@ Facts
 AB == 120
 AC == AB*1/3 == 160
 '''
+
+
 
 def angleOf(x,y):
     magU = (x[0]**2 + x[1]**2)**(1/2)
@@ -24,6 +27,7 @@ def angleOf(x,y):
         
     print(deg)
     return deg #returns in degrees'''
+
 
 x,y = [0,10],[4,5]
 
@@ -56,7 +60,7 @@ def distancePoints(p1,p2):
             
 #One key point is that you don't have to measure anything
 #So I think I should just use a variable instead of actual lenghts
-a = 200
+a = 100
 
 A = pos()   #point A
 forward(a)
@@ -153,3 +157,59 @@ while pos()[1] < M[1]:
 circle(d2, 1)
 while pos()[1] < M[1]:
     circle(d2, 1)
+
+#the two circles that I need are
+
+class cir():
+    def __init__(self,radius,center):
+        self.radius = radius
+        self.center = center
+
+
+#should be (12.1261,84.9223) and (37.8739,84.9223)
+
+
+
+
+def hypot(A,B):
+    return (A**2 + B**2)**(1/2)
+
+def intersectionOf2Circles(A,B):
+    d = hypot(B.center[0]-A.center[0],B.center[1]-A.center[1])
+
+    print(d)
+
+    ex = (B.center[0] - A.center[0])/d
+    ey = (B.center[1] - A.center[1])/d
+    print(ex)
+    print(ey)
+
+    x = (A.radius**2 - B.radius**2 + d**2)/(2*d)
+    y = abs((A.radius**2 - x**2))**(1/2)
+
+    print(x)
+    print(y)
+    p1 = (A.center[0] + x * ex - y * ey,
+          A.center[1] + x * ey + y * ex)
+
+    p2 = (A.center[0] + x * ex + y * ey,
+          A.center[1] + x * ey - y * ex)
+
+    return (p1,p2)
+c1 = cir(distancePoints(L,N),L)
+c2 = cir(distancePoints(N,M),N)  #find intersection of c1 and c2 for R,S
+
+R,S = intersectionOf2Circles(c1,c2) #Points R and S
+T = (H[0],R[1]) #Point T
+
+goto(N)
+setheading(90)
+d3 = M[1]-N[1]
+forward(d3)
+
+left(90)
+while pos()[1] > S[1]:
+    circle(d3, 1)
+circle(d3, -1)
+while pos()[1] > S[1]:
+    circle(d3, -1)
