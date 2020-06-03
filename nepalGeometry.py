@@ -4,13 +4,13 @@ import numpy as np
 
 
 class Point():
-	'''def __init__(self,x,y): 
-		self.x = float(x)
-		self.y = float(y)'''
-
-	def __init__(self,p): 
-		self.x = float(p[0])
-		self.y = float(p[1])
+	def __init__(self, x,y=None):
+		if y == None:
+			self.x = float(x[0])
+			self.y = float(x[1])
+		else:
+			self.x = x
+			self.y = y
 	def getPos(self):
 		return (self.x,self.y)
 
@@ -158,5 +158,7 @@ p1 = Point([0,0])
 p2 = Point([1,2])
 l = Line(p1,p2)
 c = Circle(4,Point([0,0]))
+
+
 
 print(intersectionsOfLineCircle(l,c))
