@@ -11,6 +11,7 @@ class Point():
 		else:
 			self.x = x
 			self.y = y
+
 	def getPos(self):
 		return (self.x,self.y)
 
@@ -44,6 +45,12 @@ class Line():
 			if not self.p1.y: return "AR" #all points are true
 			else: return None 
 		return - self.yInter() * (1/(self.slope()))
+
+	def getYof(self,x): #y = mx+b
+		return self.slope() * x + self.yInter()
+	def getXof(self,y): #mx = y-b
+		return y - self.yInter()
+
 
 	def distance(self):
 		a = self.p1.x - self.p2.x
@@ -112,53 +119,28 @@ def findShortestPointOfLinePoint(l,p, min, max):
 	print(shortestPos)
 	return smallestDistance
 
-
-
-
 def quadradicFormula(a,b,c):
 	p1 = (-b + (b**2 - 4*a*c)**(1.0/2.0))/(2*a)
 	p2 = (-b - (b**2 - 4*a*c)**(1.0/2.0))/(2*a)
 	return p1,p2
 
 def intersectionsOfLineCircle(l,c):
+	#(x+h)**2 + (y+k)**2 = r**2, y = s*x+b  wolframalpha plot of a circle, and plot of line
+	h,k,r = c.x,c.y,c.r
+	s,b = l.slope(),l.yInter()
+	print("h,k,r,s,b",h,k,r,s,b)
 
-	h = float(c.x)
-	k = float(c.y)
-	s = float(l.slope())
-	b = float(l.yInter())
-	r = float(c.r)
+	p1x = -(-h - k*s - b*s - (-k**2 - 2*k*b - b**2 + r**2 + 2*h*k*s + 2*h*b*s - h**2*s**2 + r**2*s**2)**(1.0/2.0))/(1 + s**2)
+	p1y = l.getYof(p1x)
 
-	print("y=mx+b", "y =", s,"x", b)
-	print("(x+h)^2 + (y+h^2)  =  ", )
+	p2x = -(-h - b*s - k*s + (-b**2 - 2*b*k - k**2 + r**2 + 2*b*h*s + 2*h*k*s - h**2*s**2 + r**2*s**2)**(1.0/2.0))/(1 + s**2)
+	p2y = l.getYof(p2x)
 
-	print("h,k,s,b,r",h,k,s,b,r)
-	p1x = (b - h*s - k*s**2 - s*(-k**2 - 2*k*b - b**2 + r + 2*h*k*s + 2*h*b*s - h**2*s**2 + r*s**2)**(1.0/2.0))/(1 + s**2)
-	p1y = (-h - k*s - b*s - (-k**2 - 2*k*b - b**2 + r + 2*h*k*s + 2*h*b*s - h**2*s**2 + r*s**2)**(1.0/2.0))/(1 + s**2)
-
-	return p1x,p1y
-
-	#(x-c.center.x)**2 + (l.slope()+l.yInter()-c.center.y)**2  == c.radius**2
-
-	#(x-0)**2 + (l.slope() + l.yInter() - c.center.y)**2 == 16
-
-	#x**2 + (l.yInter() - c.center.y) l.slope()**2 == 16 
-
-	#I want to return 5,-12,-7
-
-	C = (l.yInter() - c.y)**2 + -c.r**2
-	B = (l.yInter() - c.y) * l.slope() + (l.yInter()- c.y) * l.slope()
-	A = l.slope()**2 + 1
-
-	p,m = quadradicFormula(A,B,C)
-	p1 = (p, p*l.slope() + l.yInter())
-	p2 = (m, m*l.slope() + l.yInter())
-	return p1,p2
+	return (p1x,p1y),(p2x,p2y)
 	
 p1 = Point([0,0])
 p2 = Point([1,2])
 l = Line(p1,p2)
-c = Circle(4,Point([0,0]))
-
-
+c = Circle(4,Point([2,7]))
 
 print(intersectionsOfLineCircle(l,c))
