@@ -31,11 +31,35 @@ class Point():
 		return Line(self,other)
 
 class Circle():
-	def __init__(self,radius,center,c=''):
+	def __init__(self,radius,center,name=''):
 		self.r = radius
 		self.center = center
 		self.x = self.center.x
 		self.y = self.center.y
+		self.name = self.center.name
+	def __repr__(self):
+		return 'Circle: radius {}, center({},{})'.format(self.r, self.x,self.y)
+
+	def __add__(self,other):
+		d = hypotenuse(other.x - self.x, other.y - self.y)
+		if (d <= self.r + other.r and d >= abs(other.r - self.r)):
+			ex = (other.x - self.x) / d
+			ey = (other.y - self.y) / d
+			x = (self.r * self.r - other.r * other.r + d * d) / (2 * d)
+			y = (self.r * self.r - x * x)**(1.0/2.0)
+			P1 = (self.x + x * ex - y * ey,
+			self.y + x * ey + y * ex)
+			P2 = (self.x + x * ex + y * ey,
+			self.y + x * ey - y * ex)
+			return (Point(P1),Point(P2))
+		return "NONE"
+
+
+
+
+
+
+
 
 class Line():
 	def __init__(self,p1,p2,name=''):
@@ -108,20 +132,6 @@ class Line():
 
 def hypotenuse(A,B):
 		return (A**2 + B**2)**(1.0/2.0) 
-
-def intersectionOf2Circles(A,B):
-	d = hypotenuse(B.x - A.x, B.y - A.y)
-	if (d <= A.r + B.r and d >= abs(B.r - A.r)):
-		ex = (B.x - A.x) / d
-		ey = (B.y - A.y) / d
-		x = (A.r * A.r - B.r * B.r + d * d) / (2 * d)
-		y = (A.r * A.r - x * x)**(1.0/2.0)
-		P1 = (A.x + x * ex - y * ey,
-		A.y + x * ey + y * ex)
-		P2 = (A.x + x * ex + y * ey,
-		A.y + x * ey - y * ex)
-		return (Point(P1),Point(P2))
-	return "NONE" # No Intersection, far outside or one circle within the other'''
 
 def findShortestPointOfLinePoint(l,p, min, max):
 	smallestDistance = 10**100
